@@ -1,6 +1,10 @@
 # Demo: Rock, Paper, Scissors Game
-computer_choice = "scissors"
+import random
+
+computer_choice = random.choice(["rock", "paper", "scissors"])
 user_choice = input("Do you want rock, paper, or scissors?\n")
+
+print("Computer choice: " + computer_choice)
 
 if computer_choice == user_choice:
   print("TIE")

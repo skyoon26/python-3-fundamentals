@@ -1,6 +1,6 @@
 # Need to import the Employee class in order for the Company class to have access to it
 # The lowercase employee is the file name and the uppercase Employee is the class name
-from employee import Employee
+from employee import Employee, SalaryEmployee, HourlyEmployee, CommissionEmployee
 
 
 class Company:
@@ -34,13 +34,13 @@ class Company:
 def main():
     my_company = Company()
 
-    employee1 = Employee("Deanne", "Chae", 50000)
+    employee1 = SalaryEmployee("Deanne", "Chae", 50000)
     my_company.add_employee(employee1)
 
-    employee2 = Employee("Bob", "Jones", 25000)
+    employee2 = HourlyEmployee("Bob", "Jones", 25, 50)
     my_company.add_employee(employee2)
 
-    employee2 = Employee("Frank", "Smith", 60000)
+    employee2 = CommissionEmployee("Frank", "Smith", 30000, 5, 200)
     my_company.add_employee(employee2)
 
     my_company.display_employees()

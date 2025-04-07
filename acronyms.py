@@ -1,30 +1,44 @@
-# 1. Ask for user input
-look_up = input("What software acronym would you like to look up?\n")
+def find_acronym():
+    # Ask for user input
+    look_up = input("What software acronym would you like to look up?\n")
+    found = False
+    try:
+        # Open the file
+        with open("acronyms.txt") as file:
+            # Read each line of the file
+            for line in file:
+                # Check if the user's input matches the current acronym
+                if look_up in line:
+                    # Print the definition
+                    print(line)
+                    found = True
+                    break
+    except FileNotFoundError as e:
+        print("File not found")
+        return
 
-found = False
-# 2. Open the file
-# The open() function returns a File object that has methods like read() and write()
-# The with keyword makes sure the File is properly closed when the file operations are done even if an exception is raised
-# The long way to close a File is using a try/finally block using close()
-with open("acronyms.txt") as file:
-    # The read() method returns the whole file as a String by default or a specified number of bytes
-    # The readline() method returns the next line of the file as a String
-    # The readlines() method return a list of Strings of all of the lines in the file
-    # We can loop over this list and print each line
-    # Example:
-    # result = file.readlines()
-    # for line in result:
-    #     print(line)
+    if not found:
+        print("The acronym does not exist")
 
-    # 3. Read each line of the file
-    # This is the shortcut to loop over the File object:
-    for line in file:
-        # 4. Check if the user's input matches the current acronym
-        if look_up in line:
-            # 4. Print the definition
-            print(line)
-            found = True
-            break
 
-if not found:
-    print("The acronym does not exist")
+def add_acronym():
+    # Ask the user what acronym they want to add
+    acronym = input("What acronym do you want to add?\n")
+    # Then ask the user for the definition
+    definition = input("What is the definition?\n")
+    # Open the file
+    with open("acronyms.txt", "a") as file:
+        # Write the new acronym and definition to the file
+        file.write(acronym + " - " + definition + "\n")
+
+
+def main():
+    # Ask the user whether they want to find or add an acronym
+    choice = input("Do you want to find(F) or add(A) an acronym?\n")
+    if choice == "F":
+        find_acronym()
+    elif choice == "A":
+        add_acronym()
+
+
+main()

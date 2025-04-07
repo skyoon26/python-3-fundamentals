@@ -8,3 +8,5 @@ TDD - Test Driven Development
 SaaS - Software as a Service
 PaaS - Platform as a Service
 Iaas - Infrastructure as a Service
+ML - Machine Learning
+AI - Artificial Intelligence
